@@ -9,7 +9,7 @@ export default function Home() {
         console.log(users)
         
         const data = {user: 'John', password: 'JJJJ'}
-        const response = fetch('https://test-express-app-flame.vercel.app/', {
+        const response = fetch('https://test-express-app-flame.vercel.app/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
