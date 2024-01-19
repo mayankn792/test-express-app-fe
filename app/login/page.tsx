@@ -8,7 +8,7 @@ export default function Home() {
         const users = await response0.json()
         console.log(users)
         
-        const data = {user: 'John', password: 'JJJJ'}
+        const data = {username: 'John', password: 'JJJJ'}
         const response = fetch('https://test-express-app-flame.vercel.app/login', {
           method: 'POST',
           headers: {
