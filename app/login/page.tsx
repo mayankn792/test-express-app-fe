@@ -23,7 +23,7 @@ export default function Home() {
 
         //autherization 
         const response = await fetch('https://test-express-app-flame.vercel.app/users', {
-          method: 'POST',
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token.access_token
