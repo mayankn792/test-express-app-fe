@@ -5,8 +5,8 @@ export default function Home() {
     async function fun() {
         
         const response = await fetch('https://test-express-app-flame.vercel.app/u')
-        const users = response.json()
-        console.log(response)
+        const users = await response.json()
+        console.log(users)
         alert(users);
     }
     return (
