@@ -8,8 +8,9 @@ export default function Home() {
         const users = await response0.json()
         console.log(users)
         
+        //auth 
         const data = {username: 'John', password: 'JJJJ'}
-        const response = fetch('https://test-express-app-flame.vercel.app/login', {
+        const response1 = await fetch('https://test-express-app-flame.vercel.app/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -17,8 +18,20 @@ export default function Home() {
           body: JSON.stringify(data),
         })
 
-        const token = (await response).json()
+        const token = await response1.json()
         console.log(token)
+
+        //autherization 
+        const response = await fetch('https://test-express-app-flame.vercel.app/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token.access_token
+          },
+        })
+
+        const user = await response.json()
+        console.log(user)
     }
     return (
       <>
