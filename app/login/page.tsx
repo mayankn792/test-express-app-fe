@@ -123,7 +123,7 @@ export default function Home() {
           placeholder="Enter password"
         />
 
-        <button type="submit">generate access token</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">generate access token</button>
       </form>
 
       <br></br>
@@ -132,10 +132,11 @@ export default function Home() {
         <input
           type="text"
           ref={tokenRef}
-          placeholder="Enter access token "
+          placeholder="Enter access token"
+          width={150}
         />
 
-        <button type="submit">validate access token</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">validate access token</button>
       </form>
 
       <br></br>
