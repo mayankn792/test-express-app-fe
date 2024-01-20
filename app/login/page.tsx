@@ -1,5 +1,6 @@
 'use client';
 import Link from "next/link";
+import { useRef } from "react";
 
 export default function Home() {
     async function fun() {
@@ -33,11 +34,48 @@ export default function Home() {
         const user = await response.json()
         console.log(user)
     }
+    const usernameRef = useRef(null);
+    const passwordRef = useRef(null);
+    
+    const handleSumbit = (event: any) => {
+      event.preventDefault()
+      var user: string = ''
+      var pass: string = ''
+      
+      if (usernameRef.current) {
+        user = (usernameRef.current as {value: string}).value;
+      }
+
+      if (passwordRef.current) {
+        pass = (passwordRef.current as {value: string}).value;
+      }
+
+      console.log(user)
+      console.log(pass)
+      
+    }
+
     return (
       <>
-        <input placeholder="Enter Username"></input>
+        <form onSubmit={handleSumbit}>
+          <input
+            type="text"
+            ref={usernameRef}
+            placeholder="Enter username"
+          />
+
+          <input
+            type="text"
+            ref={passwordRef}
+            placeholder="Enter password"
+          />
+
+          <button type="submit">Submit</button>
+        </form>
+        
+        {/* <input placeholder="Enter Username"></input>
         <input placeholder="Enter Password"></input>
-        <Link href="#" onClick={() => fun()}>Login</Link>
+        <Link href="#" onClick={() => fun()}>Login</Link> */}
       </>
     )
   }
