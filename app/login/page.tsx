@@ -123,7 +123,7 @@ export default function Home() {
           placeholder="Enter password"
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit">generate access token</button>
       </form>
 
       <br></br>
@@ -135,7 +135,7 @@ export default function Home() {
           placeholder="Enter access token "
         />
 
-        <button type="submit">validate</button>
+        <button type="submit">validate access token</button>
       </form>
 
       <br></br>
