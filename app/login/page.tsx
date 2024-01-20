@@ -1,9 +1,19 @@
 'use client';
 import { error } from "console";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function Home() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://test-express-app-flame.vercel.app/u')
+    .then(response => response.json())
+    .then(users => setUsers(users))
+    .catch(error => console.log(error)) 
+  }, [])
+
+
   async function fun() {
 
     const response0 = await fetch('https://test-express-app-flame.vercel.app/u')
@@ -127,6 +137,21 @@ export default function Home() {
 
         <button type="submit">validate</button>
       </form>
+
+      <br></br>
+      <br></br>
+
+      <div>
+        {users.map(user => (
+          <div key={(user as {id: string}).id}>
+            <div>
+              <span className="mr-5">{(user as {name: string}).name}</span>
+
+              <span>{(user as {password: string}).password}</span>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* <input placeholder="Enter Username"></input>
         <input placeholder="Enter Password"></input>
