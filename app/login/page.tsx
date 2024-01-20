@@ -72,6 +72,31 @@ export default function Home() {
 
   }
 
+  const tokenRef = useRef(null)
+  const handleValidation = (event: any) => {
+    event.preventDefault()
+    var token = ''
+    if (tokenRef.current) {
+      token = (tokenRef.current as {value: string}).value;
+    }
+
+    fetch('https://test-express-app-flame.vercel.app/users', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    .then(response => response.json())
+    .then((user) => {
+      const msg = 'User : ' + user.id + '\n Name : ' + user.name
+      alert(msg)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+  }
+
   return (
     <>
       <form onSubmit={handleSumbit}>
@@ -88,6 +113,18 @@ export default function Home() {
         />
 
         <button type="submit">Submit</button>
+      </form>
+
+      <br></br>
+
+      <form onSubmit={handleValidation}>
+        <input
+          type="text"
+          ref={tokenRef}
+          placeholder="Enter access token "
+        />
+
+        <button type="submit">validate</button>
       </form>
 
       {/* <input placeholder="Enter Username"></input>
