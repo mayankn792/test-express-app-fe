@@ -88,6 +88,7 @@ export default function Home() {
     })
     .then(response => response.json())
     .then((user) => {
+      user = user[0]
       const msg = 'User : ' + user.id + '\n Name : ' + user.name
       alert(msg)
     })
