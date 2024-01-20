@@ -142,6 +142,8 @@ export default function Home() {
       <br></br>
 
       <div>
+        <span className="mr-5">Username</span>
+        <span className="">Password</span>
         {users.map(user => (
           <div key={(user as {id: string}).id}>
             <div>
