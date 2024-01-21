@@ -177,17 +177,19 @@ export default function Home() {
         <Table variant='striped'>
           <Thead>
             <Tr>
-              <Th>ID</Th>
+              <Th>_ID</Th>
               <Th>Username</Th>
               <Th>Password</Th>
+              <Th>Phone</Th>
             </Tr>
           </Thead>
           <Tbody>
             {users.map(user => (
               <Tr key={(user as { id: string }).id}>
-                <Td>{(user as { id: string }).id}</Td>
+                <Td>{(user as { _id: string })._id}</Td>
                 <Td>{(user as { name: string }).name}</Td>
                 <Td>{(user as { password: string }).password}</Td>
+                <Td>{(user as { phone: string }).phone}</Td>
               </Tr>
             ))}
           </Tbody>
