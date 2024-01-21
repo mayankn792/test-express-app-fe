@@ -4,11 +4,9 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
   ChakraProvider
 } from '@chakra-ui/react'
@@ -176,7 +174,7 @@ export default function Home() {
       </div> */}
 
       <TableContainer>
-        <Table variant='simple'>
+        <Table variant='striped'>
           <Thead>
             <Tr>
               <Th>ID</Th>
