@@ -173,7 +173,7 @@ export default function Home() {
         ))}
       </div> */}
 
-      <TableContainer>
+      <TableContainer m={10} border='1px' borderColor='gray' borderRadius={10}>
         <Table variant='striped'>
           <Thead>
             <Tr>
