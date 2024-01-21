@@ -187,9 +187,9 @@ export default function Home() {
           <Tbody>
             {users.map(user => (
               <Tr key={(user as { id: string }).id}>
-                <Th>{(user as { id: string }).id}</Th>
-                <Th>{(user as { name: string }).name}</Th>
-                <Th>{(user as { password: string }).password}</Th>
+                <Td>{(user as { id: string }).id}</Td>
+                <Td>{(user as { name: string }).name}</Td>
+                <Td>{(user as { password: string }).password}</Td>
               </Tr>
             ))}
           </Tbody>
