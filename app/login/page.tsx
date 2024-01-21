@@ -1,7 +1,17 @@
 'use client';
-import { error } from "console";
-import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+  ChakraProvider
+} from '@chakra-ui/react'
 
 export default function Home() {
 
@@ -10,9 +20,9 @@ export default function Home() {
 
   useEffect(() => {
     fetch('https://test-express-app-flame.vercel.app/u')
-    .then(response => response.json())
-    .then(users => setUsers(users))
-    .catch(error => console.log(error)) 
+      .then(response => response.json())
+      .then(users => setUsers(users))
+      .catch(error => console.log(error))
   }, [])
 
 
@@ -93,7 +103,7 @@ export default function Home() {
     event.preventDefault()
     var token = ''
     if (tokenRef.current) {
-      token = (tokenRef.current as {value: string}).value;
+      token = (tokenRef.current as { value: string }).value;
     }
 
     fetch('https://test-express-app-flame.vercel.app/users', {
@@ -102,20 +112,20 @@ export default function Home() {
         'Authorization': 'Bearer ' + token
       }
     })
-    .then(response => response.json())
-    .then((user) => {
-      user = user[0]
-      const msg = 'User : ' + user.id + '\n Name : ' + user.name
-      alert(msg)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+      .then(response => response.json())
+      .then((user) => {
+        user = user[0]
+        const msg = 'User : ' + user.id + '\n Name : ' + user.name
+        alert(msg)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
 
   }
 
   return (
-    <>
+    <ChakraProvider>
       <form onSubmit={handleSumbit}>
         <input
           type="text"
@@ -151,23 +161,44 @@ export default function Home() {
       <br></br>
       <br></br>
 
-      <div>
+      {/* <div>
         <span className="mr-5">Username</span>
         <span className="">Password</span>
         {users.map(user => (
-          <div key={(user as {id: string}).id}>
+          <div key={(user as { id: string }).id}>
             <div>
-              <span className="mr-5">{(user as {name: string}).name}</span>
+              <span className="mr-5">{(user as { name: string }).name}</span>
 
-              <span>{(user as {password: string}).password}</span>
+              <span>{(user as { password: string }).password}</span>
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
+
+      <TableContainer>
+        <Table variant='simple'>
+          <Thead>
+            <Tr>
+              <Th>ID</Th>
+              <Th>Username</Th>
+              <Th>Password</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {users.map(user => (
+              <Tr key={(user as { id: string }).id}>
+                <Th>{(user as { id: string }).id}</Th>
+                <Th>{(user as { name: string }).name}</Th>
+                <Th>{(user as { password: string }).password}</Th>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
 
       {/* <input placeholder="Enter Username"></input>
         <input placeholder="Enter Password"></input>
         <Link href="#" onClick={() => fun()}>Login</Link> */}
-    </>
+    </ChakraProvider>
   )
 }
