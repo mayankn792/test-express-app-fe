@@ -8,7 +8,9 @@ import {
   Th,
   Td,
   TableContainer,
-  ChakraProvider
+  ChakraProvider,
+  SkeletonText,
+  Skeleton
 } from '@chakra-ui/react'
 
 export default function Home() {
@@ -94,7 +96,7 @@ export default function Home() {
       })
 
   }
-
+  const itr = [1, 2, 3, 4]
   //handle token validation
   const tokenRef = useRef(null)
   const handleValidation = (event: any) => {
@@ -183,15 +185,29 @@ export default function Home() {
               <Th>Phone</Th>
             </Tr>
           </Thead>
+
           <Tbody>
-            {users.map(user => (
-              <Tr key={(user as { id: string }).id}>
-                <Td>{(user as { _id: string })._id}</Td>
-                <Td>{(user as { name: string }).name}</Td>
-                <Td>{(user as { password: string }).password}</Td>
-                <Td>{(user as { phone: string }).phone}</Td>
+
+            {users.length === 0 ? itr.map(k => (
+              <Tr>
+                <Td><Skeleton height={3} width={60}></Skeleton></Td>
+                <Td><Skeleton height={3} width={55}></Skeleton></Td>
+                <Td><Skeleton height={3} width={55}></Skeleton></Td>
+                <Td><Skeleton height={3} width={55}></Skeleton></Td>
               </Tr>
-            ))}
+            ))
+
+              :
+              users.map(user => (
+                <Tr key={(user as { id: string }).id}>
+                  <Td>{(user as { _id: string })._id}</Td>
+                  <Td>{(user as { name: string }).name}</Td>
+                  <Td>{(user as { password: string }).password}</Td>
+                  <Td>{(user as { phone: string }).phone}</Td>
+                </Tr>
+              ))
+            }
+
           </Tbody>
         </Table>
       </TableContainer>
