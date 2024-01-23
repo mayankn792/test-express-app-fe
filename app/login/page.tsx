@@ -189,7 +189,7 @@ export default function Home() {
           <Tbody>
 
             {users.length === 0 ? itr.map(k => (
-              <Tr>
+              <Tr key={k}>
                 <Td><Skeleton height={3} width={60}></Skeleton></Td>
                 <Td><Skeleton height={3} width={55}></Skeleton></Td>
                 <Td><Skeleton height={3} width={55}></Skeleton></Td>
