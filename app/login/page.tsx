@@ -9,7 +9,6 @@ import {
   Td,
   TableContainer,
   ChakraProvider,
-  SkeletonText,
   Skeleton
 } from '@chakra-ui/react'
 
@@ -211,10 +210,6 @@ export default function Home() {
           </Tbody>
         </Table>
       </TableContainer>
-
-      {/* <input placeholder="Enter Username"></input>
-        <input placeholder="Enter Password"></input>
-        <Link href="#" onClick={() => fun()}>Login</Link> */}
     </ChakraProvider>
   )
 }
